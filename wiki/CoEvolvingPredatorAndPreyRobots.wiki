@@ -1,0 +1,36 @@
+Sumário do paper:
+
+PARTE 1:
+Em co-evolution populações concorrentes podem, reciprocamente, levar ambas a uma grande complexidade, produzindo uma espécie de braço de ferro evolucionário.
+No caso de caçador / presa, o sucesso dos predadores significa o insucesso das presas. Quando a presa evolui mais do que o predador, cria um novo desafio para este e vice-versa, o que pode levar a uma grande complexidade. 
+O problema desta evolução é que pode-nos levar a uma situação do típico jogo pedra / papel / tesoura, ou seja, a um ciclo sem evolução.
+Então a preocupação é evitar os ciclos que levam a pouca evolução e evitar os "arm races" que levam a um nível de complexidade absurdo. 
+
+PARTE 2:
+
+Red Queen Effect:
+Em co-evo a probabilidade da reprodução de um organismo com certos traços podem ser mudados pelos seus concorrentes, isto é, mudanças numa espécie afeta o valor da reprodução de uma combinação de traços noutras espécies. Isto pode levar a que o progresso de uma geração seja reduzido ou eliminado pelas espécies concorrentes.
+Isto traz problemas ao desempenho (fitness): periods of stasis in the fitness value of the two populations may correspond to a period of tightly-coupled co-evolution. Para resolver este problema adopta-se técnicas, como por exemplo: Master Tournament: Consiste em testar a performance do melhor individuo de cada geração contra o melhor individuo de todos as gerações. Isto pode ser usado para seleccionar as melhores soluções.
+
+Evolution of predator and prey robots: a simple case:
+Num caso simples os resultados mostraram que gerações mais tardias não têm melhores resultados que gerações mais recentes. Também nesse caso foram encontrados ciclos.
+
+Testing individuals against all discovered solutions:
+Para isto usam o método HALL OF FAME: To ensure progress, we may want to save individuals for an arbitrarily long time and continue testing against them. To this end, we introduce the ‘Hall of Fame’,which extends elitism in time for purposes of testing. The best individual from every generation, is retained for future testing.
+Um individuo é testado contra outros 10 (escolhidos aleatoriamente de gerações passadas). Os resultados indicaram uma melhor performance. The average fitness of the best individuals tested against all best competitors progressively increases throughout generations.
+O facto de estes individuos serem testados contra várias estratégias (10 individuos de outras gerações) permite ao algoritmo evolucionário descobrir novas estratégias mais gerais.
+Resultados indicam que o método HALL OF FAME é um pouco melhor que o standart.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
