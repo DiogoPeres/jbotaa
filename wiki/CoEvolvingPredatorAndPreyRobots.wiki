@@ -1,3 +1,4 @@
+#labels Phase-Requirements
 Sumário do paper:
 
 PARTE 1:
@@ -21,8 +22,9 @@ Um individuo é testado contra outros 10 (escolhidos aleatoriamente de geraçõe
 O facto de estes individuos serem testados contra várias estratégias (10 individuos de outras gerações) permite ao algoritmo evolucionário descobrir novas estratégias mais gerais.
 Resultados indicam que o método HALL OF FAME é um pouco melhor que o standart.
 
-
-
+How the length of ‘arms races’ may vary in different conditions:
+Na experiencia a presa tem os sensores limitados e só pode ver o predador a uma certa distancia. Com esta limitação a evolução da presa está limitada. Para competir contra os predadores têm de mudar de estratégia quando o predador já tem a estratégia "perfeita". Se deixarmos que a presa possa ver a longas distancias, pode levar a que elas ultrapassem os predadores refinando a sua estratégia.
+Com cameras / sensores iguais, usando standart algoritm, chega-se à conclusão que os "arms races" continuam a ser muito produtivos e encontram boas soluções em ambas as gerações, sem cair em ciclo infinito. Depois, fazendo os mesmos testes com o Hall Of Fame, obteve-se ainda melhores resultados. No entanto se testarmos individuos standart contra hall of fame, verifica-se que os standart tendem a superar os Hall Of Fame. Com isto, embora as gerações hall of fame escapem melhor dos ciclos, não produzem necessariamente melhores soluções. No entanto tudo muda quando se muda os sensores, daí ser importante usar robots reais.
 
 
 
