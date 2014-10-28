@@ -42,6 +42,7 @@ Também há sempre o problemas dos critério e recompensas para certos comportam
 Outro problema é a complexidade que pode chegar os "arms races". 
 Outro será os ciclos sem evolução.
 
-
-
-
+3.1 A dynamical view of adaptation:
+Como visto, a co-evolução produz estratégia demasiado complexas para enfrentar evoluções simples, mas há casos em que estratégias simples podem fazer frente e obter melhores resultados contra a co-evolução.
+These results point to the conclusion that in certain tasks it is always possible to find a simple strategy that is able to defeat another single, albeit complex and general, strategy (although such simple strategy is a specialized strategy, i.e. it is able to defeat only that individual complex and general strategy and, of course, other similar strategies). If this is really true, in other words, if completely general solutions do not exist in some cases, we should re-consider the ‘cycling problem’. From this point of view, the fact of a co-evolutionary dynamics leading to a limit cycle in which the same type of solutions are adopted over and over again should not be considered as a failure but as an optimal solution. We cannot complain that co-evolution does not find a more general strategy able to cope with all the strategies adopted by the co-evolving population during a cycle if such general strategies do not exist.
+The best that can be done is to select the appropriate strategy for the current counter-strategy, which is actually what happens when the co-evolutionary dynamics ends in a limit cycle.
