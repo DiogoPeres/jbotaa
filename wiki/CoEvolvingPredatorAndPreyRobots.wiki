@@ -26,12 +26,21 @@ How the length of ‘arms races’ may vary in different conditions:
 Na experiencia a presa tem os sensores limitados e só pode ver o predador a uma certa distancia. Com esta limitação a evolução da presa está limitada. Para competir contra os predadores têm de mudar de estratégia quando o predador já tem a estratégia "perfeita". Se deixarmos que a presa possa ver a longas distancias, pode levar a que elas ultrapassem os predadores refinando a sua estratégia.
 Com cameras / sensores iguais, usando standart algoritm, chega-se à conclusão que os "arms races" continuam a ser muito produtivos e encontram boas soluções em ambas as gerações, sem cair em ciclo infinito. Depois, fazendo os mesmos testes com o Hall Of Fame, obteve-se ainda melhores resultados. No entanto se testarmos individuos standart contra hall of fame, verifica-se que os standart tendem a superar os Hall Of Fame. Com isto, embora as gerações hall of fame escapem melhor dos ciclos, não produzem necessariamente melhores soluções. No entanto tudo muda quando se muda os sensores, daí ser importante usar robots reais.
 
+The role of environmental richness:
+Os arms races podem variar consoante diferentes condições, isto é, pode-se ter ciclos finitos (infinitos) sem evolução, como pode-se ter evoluções de geração para geração durante muitas gerações.
+Uma das maneiras de evitar os ciclos sem evolução é a com a riqueza do ambiente. Na co-evolução os concorrentes têm o mesmo ambiente. Podemos supor que a probabilidade de uma mudança repentina no comportamento que vai 
+produzir indivíduos viáveis ​​é inversamente proporcional à riqueza do ambiente 
+que não é submetido à co-evolução. Por exemplo, o evitar obstáculos que não faz parte da co-evolução não fará parte do processo de mudança de estratégia.
+Os resultados indicam que quanto mais o ambiente estiver enriquecido, mais atrasará o processo de ciclo sem evolução.
 
+How co-evolution can enhance the adaptive power of artificial evolution:
+Basicamente testou-se se a evolução simples seria melhor do que a co-evolução. Verificou-se que nos casos simples era verdade, a evolução simples dava melhores resultados, mas ao criar-se mais dificuldades, enriquecendo o ambiente e/ou diminuindo a capacidades/sensores dos drones, verificou-se que as primeiras gerações tinham uma performance a tender para zero, ou seja, maus resultados. Também verificou-se que a evolução simples pode criar boas presas contra os melhores predadores, porque a estratégia passou por andar mais depressa mesmo estando longe dos predadores, ou seja, evita-los a qualquer custo.
 
-
-
-
-
+PARTE 3 - Problemas a considerar:
+Bootstrap problem: individuos das primeiras gerações teram grandes dificuldades com tarefas complexas. Isto, porque esta evolução começa sempre do zero.
+Também há sempre o problemas dos critério e recompensas para certos comportamentos que podem influenciar a evolução.
+Outro problema é a complexidade que pode chegar os "arms races". 
+Outro será os ciclos sem evolução.
 
 
 
