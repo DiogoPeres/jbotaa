@@ -1,5 +1,6 @@
 package environmentpatrol;
 
+import java.awt.Color;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
@@ -19,10 +20,6 @@ import simulation.util.Arguments;
 
 public class CoEvoPatrolEnvironment extends Environment{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private static final double PREY_RADIUS = 0.025;
 	private static final double PREY_MASS = 1;
 	private double nestLimit;
@@ -63,12 +60,14 @@ public class CoEvoPatrolEnvironment extends Environment{
 	public void setup(Simulator simulator) {
 		super.setup(simulator);
 		for (int i = 0; i < numberOfPreys; i++) {
-			addPrey(new Prey(simulator, "Prey " + i, newRandomPosition(), 0, PREY_MASS, PREY_RADIUS));
+			//addPrey(new Prey(simulator, "Prey " + i, newRandomPosition(), 0, PREY_MASS, PREY_RADIUS));
 		}
 
-		nests.add(new Nest(simulator, "NestA", width/2-0.5, height/2-0.5, nestLimit));
-		nests.add(new Nest(simulator, "NestB", -width/2+0.5, -height/2+0.5, nestLimit));
+		nests.add(new Nest(simulator, "NestA", width/7+0.5, -height/1.8+0.5, nestLimit));
+		nests.add(new Nest(simulator, "NestB", -width/5+0.5, -height/1.8+0.5, nestLimit));
+		nests.add(new Nest(simulator, "NestC", -width/2+0.5, -height/1.8+0.5, nestLimit));
 		for (Nest nest : nests) {
+			nest.setColor(new Color(153,255,51));
 			addObject(nest);
 		}
 
@@ -83,10 +82,11 @@ public class CoEvoPatrolEnvironment extends Environment{
 		
 		if(startInNest) {
 			for (Robot r : robots) {
+				System.out.println(robots.size());
 				if(r.getDescription().equalsIgnoreCase("teama"))
-					r.teleportTo(new Vector2d(width/2-0.5, height/2-0.5));
+					r.teleportTo(new Vector2d(width/4-0.5, height/1.8-0.5));
 				else
-					r.teleportTo(new Vector2d(-width/2+0.5, -height/2+0.5));
+					r.teleportTo(new Vector2d(-width/5+0.5, -height/1.8+0.5));
 				
 				r.setOrientation(random.nextDouble() * 2*Math.PI);
 			}
@@ -167,5 +167,4 @@ public class CoEvoPatrolEnvironment extends Environment{
 	public LinkedList<Nest> getNests() {
 		return nests;
 	}
-
 }
