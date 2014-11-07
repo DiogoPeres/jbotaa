@@ -30,15 +30,10 @@ public class PatrolEvaluationFunction extends EvaluationFunction{
 			
 			pos=r.getPosition();
 			double distanceToNest = coord.distanceTo(nestPosition);
-			if (distanceToNest < NESTRADIUS) {
+			if (distanceToNest < NESTRADIUS + 0.6) {
 				numberOfRobotsCloseToNest++;
 			} 
-			if(distanceToNest < 1){
-				fitness ++;
-			}else{
-				fitness --;
-			}
-			
+			fitness += (double) numberOfRobotsCloseToNest * 0.1;
 			if(distanceToNest > 0.5 && distanceToNest < 0.6){
 				boolean haspass = false;
 				for (int i = 0; i < pontos.size(); i++) {
@@ -48,15 +43,13 @@ public class PatrolEvaluationFunction extends EvaluationFunction{
 				}
 				if(!haspass) {
 					pontos.add(r.getPosition());
-					fitness+=10;
+					fitness+=1;
 				}
 				if(pontos.size()>50){
-					for (int i = 0; i < pontos.size()-10; i++) {
+					for (int i = 0; i < pontos.size()-20; i++) {
 							pontos.remove(i);
 					}
 				}
-			}else{
-				fitness = fitness - 0.3;
 			}
 		}
 		

@@ -33,7 +33,7 @@ public class SimpleEvaluationFunction extends EvaluationFunction {
 		}
 		fitness += (double) numberOfRobotsCloseToNest * 0.1;
 		if(pos.distanceTo(nestPosition) <=0.01){
-			fitness+=10;
+			fitness+=1;
 			//simulator.getEnvironment().getRobots().get(0).stop();
 		}
 	}
