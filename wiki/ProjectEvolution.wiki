@@ -7,4 +7,4 @@
 
 - Simple evolution: Find prey (status: developed);
 
-- Backup created;
+- _Backup created;_
