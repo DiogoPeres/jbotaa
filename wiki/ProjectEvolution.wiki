@@ -1,7 +1,7 @@
 #labels Phase-Requirements,Phase-Implementation
 ===Work in progress / developed:===
 
-- Simple evolution: Nest search (status: developed);
+- Simple evolution: Nest search (status: developed and reviewed);
 
 - Simple evolution: Patrol nest (status: developed);
 
