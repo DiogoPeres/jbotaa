@@ -3,7 +3,7 @@
 
 - Simple evolution: Nest search (status: developed, reviewed and commented);
 
-- Simple evolution: Patrol nest (status: developed and commented);
+- Simple evolution: Patrol nest (status: developed, commented and reviewed);
 
 - Simple evolution: Find prey (status: developed, reviewed and commented);
 
