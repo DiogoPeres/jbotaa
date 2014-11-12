@@ -1,2 +1,8 @@
+#labels Phase-Requirements,Phase-Implementation
 ===Work in progress / developed:===
-# sdfwe
+
+- Simple evolution: Nest search (status: developed);
+
+- Simple evolution: Patrol nest (status: developed);
+
+- Simple evolution: Find prey (status: in progress);
