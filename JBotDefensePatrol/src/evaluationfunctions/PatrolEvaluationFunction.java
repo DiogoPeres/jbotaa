@@ -44,30 +44,33 @@ public class PatrolEvaluationFunction extends EvaluationFunction{
 			 */
 			fitness += (double) numberOfRobotsCloseToNest * 0.1;
 			if(distanceToNest > MIN_PATROL_AREA && distanceToNest < MAX_PATROL_AREA){
-				boolean haspass = false;
-				for (int i = 0; i < pontos.size(); i++) {
-					/**
-					 * verifica se já passou naquele ponto
-					 */
-					if(pontos.get(i).distanceTo(r.getPosition()) == 0){
-						haspass=true;
-					}
-				}
-				/**
-				 * a não passagem naquele ponto da area de patrulha aumenta ainda mais o desempenho
-				 */
-				if(!haspass) {
-					pontos.add(r.getPosition());
-					fitness+=1;
-				}
-				/**
-				 * limpa a lista para que o robot possa percorrer pontos já percorrido há algum tempo
-				 */
-				if(pontos.size()>100){
-					for (int i = 0; i < pontos.size()-50; i++) {
-						pontos.remove(i);
-					}
-				}
+				fitness+=1;
+// Comentada a secção que verificava se o robot andava para trás por não ser consistente, para descomentar seleccionar linhas e "ctr + shift + /"				
+//				boolean haspass = false;
+//				for (int i = 0; i < pontos.size(); i++) {
+//					/**
+//					 * verifica se já passou naquele ponto
+//					 */
+//					if(pontos.get(i).distanceTo(r.getPosition()) == 0){
+//						haspass=true;
+//					}
+//				}
+//				/**
+//				 * a não passagem naquele ponto da area de patrulha aumenta ainda mais o desempenho
+//				 */
+//				
+//				if(!haspass) {
+//					pontos.add(r.getPosition());
+//					fitness+=1;
+//				}
+//				/**
+//				 * limpa a lista para que o robot possa percorrer pontos já percorrido há algum tempo
+//				 */
+//				if(pontos.size()>100){
+//					for (int i = 0; i < pontos.size()-50; i++) {
+//						pontos.remove(i);
+//					}
+//				}
 			}
 		}
 	}
