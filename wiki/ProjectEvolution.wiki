@@ -5,10 +5,10 @@
 
 - Simple evolution: Patrol nest (status: developed, commented and reviewed);
 
-- Simple evolution: Find prey (status: developed, reviewed and commented);
+- Simple evolution: Find prey (status: developed, commented and reviewed);
 
 - _Backup created;_
 
 - Simple evolution: Bring Prey to Nest (status: in Progress);
 
-- Co-evolution: Chase robot (status: in progress);
+- Co-Evolution: Chase robot (status: developed and commented);
