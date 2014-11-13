@@ -13,7 +13,7 @@ import simulation.util.Arguments;
  */
 public class EscapeFromRobotEvaluationFunction extends EvaluationFunction{
 	private double GREAT_DISTANCE_TO_ROBOT = 0.4;
-	private double BAD_DISTANCE_TO_ROBOT = 0.1;
+	private double BAD_DISTANCE_TO_ROBOT = 0.2;
 	String team="teamb";
 
 	public EscapeFromRobotEvaluationFunction(Arguments args) {
@@ -31,7 +31,8 @@ public class EscapeFromRobotEvaluationFunction extends EvaluationFunction{
 					 * Quanto mais perto de um robot A, mais diminui a fitness
 					 */
 					distanceToRobot = r.getPosition().distanceTo(r2.getPosition());
-					if(distanceToRobot>= GREAT_DISTANCE_TO_ROBOT){
+					fitness += distanceToRobot -1;
+					/*if(distanceToRobot>= GREAT_DISTANCE_TO_ROBOT){
 						fitness++;
 					}else{
 						fitness--;
@@ -39,7 +40,7 @@ public class EscapeFromRobotEvaluationFunction extends EvaluationFunction{
 							fitness=fitness-2;
 						}
 					}
-					
+					*/
 				}
 			}
 

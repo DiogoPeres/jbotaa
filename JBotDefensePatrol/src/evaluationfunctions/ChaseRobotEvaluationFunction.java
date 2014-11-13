@@ -13,7 +13,8 @@ import evolutionaryrobotics.evaluationfunctions.EvaluationFunction;
  * Função de avaliação da equipa A, perseguição dos robots da equipa B
  */
 public class ChaseRobotEvaluationFunction extends EvaluationFunction {
-	private double GOOD_DISTANCE_TO_ROBOT = 0.3;
+	private double OK_DISTANCE_TO_ROBOT = 0.6;
+	private double GOOD_DISTANCE_TO_ROBOT = 0.4;
 	private double PERFECT_DISTANCE_TO_ROBOT = 0.1;
 	String team="teama";
 
@@ -32,13 +33,16 @@ public class ChaseRobotEvaluationFunction extends EvaluationFunction {
 					 * Quanto mais longe de um robot B, mais diminui a fitness
 					 */
 					distanceToRobot = r.getPosition().distanceTo(r2.getPosition());
-					if(distanceToRobot<= GOOD_DISTANCE_TO_ROBOT){
+					fitness += 1-distanceToRobot;
+					/*if(distanceToRobot<= GOOD_DISTANCE_TO_ROBOT){
 						fitness++;
 					}else{
-						fitness--;
+						if(distanceToRobot< OK_DISTANCE_TO_ROBOT)
+							fitness+=0.5;
+						else fitness--;
 					}
 					if(distanceToRobot<=PERFECT_DISTANCE_TO_ROBOT) fitness+=4;
-					
+					*/
 				}
 			}
 
