@@ -10,3 +10,5 @@
 - _Backup created;_
 
 - Simple evolution: Bring Prey to Nest (status: in Progress);
+
+- Simple evolution: Find robot (status: in progress);
