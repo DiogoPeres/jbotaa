@@ -65,7 +65,7 @@ public class CoEvoPatrolEnvironment extends Environment{
 
 		nests.add(new Nest(simulator, "NestA", width/7+0.5, -height/1.8+0.5, nestLimit));
 		//nests.add(new Nest(simulator, "NestB", -width/5+0.5, -height/1.8+0.5, nestLimit));
-		nests.add(new Nest(simulator, "NestC", -width/2+0.5, -height/1.8+0.5, nestLimit));
+		//nests.add(new Nest(simulator, "NestC", -width/2+0.5, -height/1.8+0.5, nestLimit));
 		for (Nest nest : nests) {
 			nest.setColor(new Color(153,255,51));
 			addObject(nest);
@@ -82,7 +82,6 @@ public class CoEvoPatrolEnvironment extends Environment{
 		
 		if(startInNest) {
 			for (Robot r : robots) {
-				System.out.println(robots.size());
 				if(r.getDescription().equalsIgnoreCase("teama"))
 					r.teleportTo(new Vector2d(width/4-0.5, height/1.8-0.5));
 				else
