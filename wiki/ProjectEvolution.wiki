@@ -11,4 +11,4 @@
 
 - Simple evolution: Bring Prey to Nest (status: in Progress);
 
-- Simple evolution: Find robot (status: in progress);
+- Co-evolution: Chase robot (status: in progress);
