@@ -1,4 +1,4 @@
-package evaluationfunctions;
+package evaluationfunctions.coevolution;
 
 import evolutionaryrobotics.evaluationfunctions.EvaluationFunction;
 import mathutils.Vector2d;
@@ -9,7 +9,7 @@ import simulation.util.Arguments;
 /**
  * 
  * @author Nuno e Diogo
- * Função de avaliação da equipa B, fuga dos robots da equipa A
+ * Evaluation Function of team B, run away from team A robots
  */
 public class EscapeFromRobotEvaluationFunction extends EvaluationFunction{
 	private double GREAT_DISTANCE_TO_ROBOT = 0.4;
@@ -27,8 +27,8 @@ public class EscapeFromRobotEvaluationFunction extends EvaluationFunction{
 			for (Robot r2 : simulator.getEnvironment().getRobots()) {
 				if(r.getDescription().equals(team) && !r2.getDescription().equals(team)){
 					/**
-					 * Quanto mais longe de um robot A, mais aumenta a fitness
-					 * Quanto mais perto de um robot A, mais diminui a fitness
+					 * The farther of one robot of team A, more increases the fitness
+					 * The closer of one robot of team A, more decreases the fitness
 					 */
 					distanceToRobot = r.getPosition().distanceTo(r2.getPosition());
 					fitness += distanceToRobot -1;
@@ -46,7 +46,7 @@ public class EscapeFromRobotEvaluationFunction extends EvaluationFunction{
 
 		}
 		/**
-		 * a fitness é incrementada se houver robots junto de presas
+		 * Fitness is increased if there is any robots near the preys
 		 */
 
 	}

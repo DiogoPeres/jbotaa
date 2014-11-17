@@ -10,7 +10,12 @@ import simulation.util.Arguments;
 import environmentpatrol.CoEvoPatrolEnvironment;
 import environmentpatrol.SimpleEnvironment;
 import evolutionaryrobotics.evaluationfunctions.EvaluationFunction;
-
+/**
+ * 
+ * @author Diogo & Nuno
+ * 
+ * Bring the prey to the nest and keep protect it
+ */
 public class BringPreyEvaluationFunction extends EvaluationFunction {
 	private Vector2d nestPosition = new Vector2d(0, 0);
 	private double NESTRADIUS;
@@ -27,24 +32,30 @@ public class BringPreyEvaluationFunction extends EvaluationFunction {
 		for(Robot r : environment.getRobots()) {
 			PreyPickerActuator actuator = (PreyPickerActuator)r.getActuatorByType(PreyPickerActuator.class);
 			double closestPreyDistance = Double.MAX_VALUE;
+			/**
+			 * 	check for the prey that is closest
+			 */
 			for(Prey p : environment.getPrey()) {
 				double distance = p.getPosition().distanceTo(r.getPosition());
 				if(distance < closestPreyDistance) {
 					closestPreyDistance = distance;
 				}
 			}
-			/*if(closestPreyDistance < 0.2) {
-				fitness+= 0.2;
-				//fitness += (environment.getForageRadius() - closestPreyDistance) / environment.getForageRadius() * .0001;
-			}*/
+			
+			/**
+			 * earn fitness as robot approach the prey
+			 */
 			fitness+= 2-closestPreyDistance;
+			/**
+			 * if the robot is carrying prey earns more 1 of fitness
+			 */
+			if(actuator.isCarryingPrey())
+				fitness+=1;
+			/**
+			 * 	if the robot is close to the prey and close to the nest earns 10 more points
+			 */
 			if(closestPreyDistance < 0.2 && r.getPosition().distanceTo(nestPosition)< NESTRADIUS){
 				fitness+=10;
-				/*double robotDistanceToNest = r.getPosition().distanceTo(nestPosition);
-				if(robotDistanceToNest < 0.05)
-					fitness += 10;
-					
-			}*/
 			}
 		}
 		

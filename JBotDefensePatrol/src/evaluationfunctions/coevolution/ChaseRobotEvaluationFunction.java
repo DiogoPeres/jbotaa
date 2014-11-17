@@ -1,4 +1,4 @@
-package evaluationfunctions;
+package evaluationfunctions.coevolution;
 
 import mathutils.Vector2d;
 import simulation.Simulator;
@@ -10,8 +10,8 @@ import evolutionaryrobotics.evaluationfunctions.EvaluationFunction;
 /**
  * 
  * @author Nuno e Diogo
- * Função de avaliação da equipa A, perseguição dos robots da equipa B
- */
+ * Evaluation Function of team A, chase robots of team B
+ */ 
 public class ChaseRobotEvaluationFunction extends EvaluationFunction {
 	private double OK_DISTANCE_TO_ROBOT = 0.6;
 	private double GOOD_DISTANCE_TO_ROBOT = 0.4;
@@ -29,8 +29,8 @@ public class ChaseRobotEvaluationFunction extends EvaluationFunction {
 			for (Robot r2 : simulator.getEnvironment().getRobots()) {
 				if(r.getDescription().equals(team) && !r2.getDescription().equals(team)){
 					/**
-					 * Quanto mais perto de um robot B, mais aumenta a fitness
-					 * Quanto mais longe de um robot B, mais diminui a fitness
+					 * The closer of one robot of team B, the greater the fitness
+					 * The farther of one robot of team B, more decreases the fitness
 					 */
 					distanceToRobot = r.getPosition().distanceTo(r2.getPosition());
 					fitness += 1-distanceToRobot;
@@ -48,7 +48,7 @@ public class ChaseRobotEvaluationFunction extends EvaluationFunction {
 
 		}
 		/**
-		 * a fitness é incrementada se houver robots junto de presas
+		 * Fitness is increased if there is any robots near the preys
 		 */
 
 	}

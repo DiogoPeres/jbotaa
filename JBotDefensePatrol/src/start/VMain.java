@@ -3,7 +3,8 @@ import evolutionaryrobotics.ViewerMain;
 
 
 public class VMain {
-
+	//ResultViewerGui
+	//ResultCoEvolutionViewerGui
 	public static void main(String[] args) {
 		try {
 			new ViewerMain(new String[]{"--gui","classname=ResultCoEvolutionViewerGui,renderer=(classname=TwoDRenderer)"});

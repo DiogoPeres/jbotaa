@@ -9,10 +9,8 @@ import simulation.robot.Robot;
 import simulation.util.Arguments;
 
 /**
- * 
  * @author Diogo & Nuno
- * 
- * Função para mover robot até ao ninho
+ * Evaluation Function to move the robot to the nest
  */
 
 public class SimpleEvaluationFunction extends EvaluationFunction {
@@ -37,7 +35,8 @@ public class SimpleEvaluationFunction extends EvaluationFunction {
 				lastDistanceToNest=pos.distanceTo(nestPosition);
 			}
 			/**
-			 * Dá recompensa de cada vez que se aproxima do ninho e dá castigo de cada vez que se afasta
+			 * Increases Fitness for each time the robot approaches the nest
+			 * Decreases Fitness any time the robots move away from the nest
 			 */
 			if(lastDistanceToNest>pos.distanceTo(nestPosition)){
 				fitness+=(lastDistanceToNest-pos.distanceTo(nestPosition))*100;
@@ -46,7 +45,7 @@ public class SimpleEvaluationFunction extends EvaluationFunction {
 			}
 			lastDistanceToNest = pos.distanceTo(nestPosition);
 			/**
-			 * Dá recompensa quando o robot está no meio do ninho
+			 * Increases Fitness if the robot is in the nest
 			 */
 			if(pos.distanceTo(nestPosition) <=0.01){
 				fitness+=2;

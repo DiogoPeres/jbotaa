@@ -12,7 +12,7 @@ import evolutionaryrobotics.evaluationfunctions.EvaluationFunction;
 /**
  * 
  * @author Nuno e Diogo
- * Função de avaliação para patrulhar junto ao ninho
+ * Evaluation function to patrol near the nest
  */
 public class PatrolEvaluationFunction extends EvaluationFunction{
 	private Vector2d    nestPosition = new Vector2d(0, 0);
@@ -34,13 +34,13 @@ public class PatrolEvaluationFunction extends EvaluationFunction{
 			coord.set(r.getPosition());
 			double distanceToNest = coord.distanceTo(nestPosition);
 			/**
-			 * verifica se há robots na area de patrulha desejada
+			 * Verify is there is any robots in the designated patrol area
 			 */
 			if (distanceToNest < NESTRADIUS + MAX_PATROL_AREA) {
 				numberOfRobotsCloseToNest++;
 			} 
 			/**
-			 * fitness é incrementada se houver robots perto do ninho
+			 * Fitness is increased if there is any robots near the nest
 			 */
 			fitness += (double) numberOfRobotsCloseToNest * 0.1;
 			if(distanceToNest > MIN_PATROL_AREA && distanceToNest < MAX_PATROL_AREA){

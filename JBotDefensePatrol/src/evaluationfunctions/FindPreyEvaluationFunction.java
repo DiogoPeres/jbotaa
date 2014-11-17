@@ -10,7 +10,7 @@ import evolutionaryrobotics.evaluationfunctions.EvaluationFunction;
 /**
  * 
  * @author Nuno e Diogo
- * Função de avaliação para identificar e ficar junto de uma presa
+ * Evaluation function to identify and stay near a prey
  */
 public class FindPreyEvaluationFunction extends EvaluationFunction {
 	private Vector2d nestPosition = new Vector2d(0, 0);
@@ -31,7 +31,7 @@ public class FindPreyEvaluationFunction extends EvaluationFunction {
 				double distanceToPrey = pos.distanceTo(simulator
 						.getEnvironment().getPrey().get(i).getPosition());
 				/**
-				 * verifica se há robots junto de presas
+				 * Verify if there is any robots near preys
 				 */
 				if (distanceToPrey <= GOOD_DISTANCE_TO_PREY) {
 					numberOfRobotsCloseToPrey++;
@@ -39,7 +39,7 @@ public class FindPreyEvaluationFunction extends EvaluationFunction {
 			}
 		}
 		/**
-		 * a fitness é incrementada se houver robots junto de presas
+		 * The fitness is increased if there is any robots near a prey
 		 */
 		fitness += (double) numberOfRobotsCloseToPrey * 0.1;
 	}
