@@ -9,7 +9,7 @@
 
 - _Backup created;_
 
-- Simple evolution: Bring Prey to Nest (and protect it)(status: developed and commented);
+- Simple evolution: Bring Prey to Nest (and protect it) (status: developed and commented);
 
 - Co-Evolution: Chase robot (status: developed and commented);
 
