@@ -14,11 +14,12 @@ import simulation.util.Arguments;
 public class InvadeNestWithoutBeingCaught extends EvaluationFunction{
 	private Vector2d nestPosition = new Vector2d(0, 0);
 	private double NESTRADIUS;
-	private double GREAT_DISTANCE_TO_ROBOT = 0.4;
-	private double BAD_DISTANCE_TO_ROBOT = 0.2;
+	private double CATCHED_DISTANCE_TO_ROBOT = 0.4;
 	String team="teamb";
 	private boolean wasCatched = false;
-
+	private boolean gotToNest = false;
+	private boolean win = false;
+	
 	public InvadeNestWithoutBeingCaught(Arguments args) {
 		super(args);
 	}
@@ -27,7 +28,8 @@ public class InvadeNestWithoutBeingCaught extends EvaluationFunction{
 	public void update(Simulator simulator) {
 		NESTRADIUS         = ((CoEvoPatrolEnvironment)(simulator.getEnvironment())).getNestRadius();
 		
-		double distanceToRobot = 0;
+		double distanceToEnemyRobot = 0;
+		double distanceToNest = 0;
 		for (Robot r : simulator.getEnvironment().getRobots()) {
 			for (Robot r2 : simulator.getEnvironment().getRobots()) {
 				if(r.getDescription().equals(team) && !r2.getDescription().equals(team)){
@@ -38,9 +40,23 @@ public class InvadeNestWithoutBeingCaught extends EvaluationFunction{
 					 */
 					
 					
-					distanceToRobot = r.getPosition().distanceTo(r2.getPosition());
-					fitness += distanceToRobot -1;
-					fitness += 2 - r.getPosition().distanceTo(nestPosition);
+					distanceToEnemyRobot = r.getPosition().distanceTo(r2.getPosition());
+					distanceToNest = r.getPosition().distanceTo(nestPosition);
+					if(distanceToEnemyRobot <= CATCHED_DISTANCE_TO_ROBOT){
+						wasCatched = true;
+					}
+					
+					if(distanceToNest <= NESTRADIUS && !wasCatched){
+						win = true;
+						//fitness++;
+					}
+					
+					if(!win){
+						fitness += distanceToEnemyRobot -1;
+						fitness += 1 - distanceToNest;
+					}
+					
+					
 					
 					/*if(distanceToRobot>= GREAT_DISTANCE_TO_ROBOT){
 						fitness++;
