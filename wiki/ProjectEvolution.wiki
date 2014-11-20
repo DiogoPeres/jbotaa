@@ -11,8 +11,8 @@
 
 - Simple evolution: Bring Prey to Nest (and protect it) (status: developed and commented);
 
-- Co-Evolution: Chase robot (status: developed and commented);
+- Co-Evolution: Chase robot (status: developed, commented and reviewed );
 
-- Co-Evolution: Invade Nest Without Being Caught (status: developed);
+- Co-Evolution: Invade Nest Without Being Caught (status: developed and commented);
 
 - _Backup created;_
