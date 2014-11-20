@@ -12,7 +12,7 @@ import simulation.util.Arguments;
  * @author Diogo & Nuno
  */
 public class InvadeNestWithoutBeingCaught extends EvaluationFunction{
-	private Vector2d nestPosition = new Vector2d(0, 0);
+	private Vector2d nestPosition;
 	private double NESTRADIUS;
 	private double CATCHED_DISTANCE_TO_ROBOT = 0.4;
 	String team="teamb";
@@ -27,7 +27,7 @@ public class InvadeNestWithoutBeingCaught extends EvaluationFunction{
 	@Override
 	public void update(Simulator simulator) {
 		NESTRADIUS         = ((CoEvoPatrolEnvironment)(simulator.getEnvironment())).getNestRadius();
-		
+		nestPosition = ((CoEvoPatrolEnvironment)(simulator.getEnvironment())).getNests().getFirst().getPosition();
 		double distanceToEnemyRobot = 0;
 		double distanceToNest = 0;
 		for (Robot r : simulator.getEnvironment().getRobots()) {
@@ -42,13 +42,16 @@ public class InvadeNestWithoutBeingCaught extends EvaluationFunction{
 					
 					distanceToEnemyRobot = r.getPosition().distanceTo(r2.getPosition());
 					distanceToNest = r.getPosition().distanceTo(nestPosition);
-					if(distanceToEnemyRobot <= CATCHED_DISTANCE_TO_ROBOT){
+					if(distanceToEnemyRobot <= CATCHED_DISTANCE_TO_ROBOT && !wasCatched && !win){
 						wasCatched = true;
+						//System.out.println("foi apanhado");
+						
 					}
 					
 					if(distanceToNest <= NESTRADIUS && !wasCatched){
 						win = true;
-						//fitness++;
+						fitness+=1000;
+						//System.err.println("GANHOU");
 					}
 					
 					if(!win){
