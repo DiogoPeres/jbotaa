@@ -12,8 +12,6 @@ import simulation.util.Arguments;
  * Evaluation Function of team B, run away from team A robots
  */
 public class EscapeFromRobotEvaluationFunction extends EvaluationFunction{
-	private double GREAT_DISTANCE_TO_ROBOT = 0.4;
-	private double BAD_DISTANCE_TO_ROBOT = 0.2;
 	String team="teamb";
 
 	public EscapeFromRobotEvaluationFunction(Arguments args) {
@@ -27,27 +25,13 @@ public class EscapeFromRobotEvaluationFunction extends EvaluationFunction{
 			for (Robot r2 : simulator.getEnvironment().getRobots()) {
 				if(r.getDescription().equals(team) && !r2.getDescription().equals(team)){
 					/**
-					 * The farther of one robot of team A, more increases the fitness
-					 * The closer of one robot of team A, more decreases the fitness
+					 * The farther of team A robots, the more the fitness increases
+					 * The closer of team A robots, the more the fitness decreases 
 					 */
 					distanceToRobot = r.getPosition().distanceTo(r2.getPosition());
 					fitness += distanceToRobot -1;
-					/*if(distanceToRobot>= GREAT_DISTANCE_TO_ROBOT){
-						fitness++;
-					}else{
-						fitness--;
-						if(distanceToRobot<= BAD_DISTANCE_TO_ROBOT){
-							fitness=fitness-2;
-						}
-					}
-					*/
 				}
 			}
-
 		}
-		/**
-		 * Fitness is increased if there is any robots near the preys
-		 */
-
 	}
 }

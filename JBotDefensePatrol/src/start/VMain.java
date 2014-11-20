@@ -1,16 +1,19 @@
 package start;
 import evolutionaryrobotics.ViewerMain;
 
-
+/**
+ * 
+ * @author Nuno e Diogo
+ * Simulation window
+ */
 public class VMain {
-	//ResultViewerGui
-	//ResultCoEvolutionViewerGui
+	//ResultViewerGui - for simple evolutions
+	//ResultCoEvolutionViewerGui - for co-evolutions
 	public static void main(String[] args) {
 		try {
 			new ViewerMain(new String[]{"--gui","classname=ResultCoEvolutionViewerGui,renderer=(classname=TwoDRenderer)"});
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("JbotSim error! Check the Gui options on VMain");
 		}
 
 	}
