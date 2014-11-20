@@ -8,13 +8,16 @@ import simulation.Simulator;
 import simulation.robot.Robot;
 import simulation.util.Arguments;
 
-
+/**
+ * @author Diogo & Nuno
+ */
 public class InvadeNestWithoutBeingCaught extends EvaluationFunction{
 	private Vector2d nestPosition = new Vector2d(0, 0);
 	private double NESTRADIUS;
 	private double GREAT_DISTANCE_TO_ROBOT = 0.4;
 	private double BAD_DISTANCE_TO_ROBOT = 0.2;
 	String team="teamb";
+	private boolean wasCatched = false;
 
 	public InvadeNestWithoutBeingCaught(Arguments args) {
 		super(args);
@@ -33,6 +36,8 @@ public class InvadeNestWithoutBeingCaught extends EvaluationFunction{
 					 * The closer of one robot of team A, more decreases the fitness
 					 * The closer of the nest, more increases the fitness
 					 */
+					
+					
 					distanceToRobot = r.getPosition().distanceTo(r2.getPosition());
 					fitness += distanceToRobot -1;
 					fitness += 2 - r.getPosition().distanceTo(nestPosition);
