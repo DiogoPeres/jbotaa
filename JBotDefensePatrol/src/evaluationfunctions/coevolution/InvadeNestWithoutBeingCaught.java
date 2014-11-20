@@ -17,6 +17,7 @@ public class InvadeNestWithoutBeingCaught extends EvaluationFunction{
 	private double NESTRADIUS;
 	private double CATCHED_DISTANCE_TO_ROBOT = 0.2;
 	String team="teamb";
+	private boolean wasCatched = false;
 	private boolean win = false;
 	
 	public InvadeNestWithoutBeingCaught(Arguments args) {
@@ -40,18 +41,14 @@ public class InvadeNestWithoutBeingCaught extends EvaluationFunction{
 					distanceToEnemyRobot = r.getPosition().distanceTo(r2.getPosition());
 					distanceToNest = r.getPosition().distanceTo(nestPosition);
 					
-					/**
-					 * objective failed
-					 */
-					if(distanceToEnemyRobot <= CATCHED_DISTANCE_TO_ROBOT && !win){
-						fitness=fitness-100;
-						simulator.stopSimulation();
+					if(distanceToEnemyRobot <= CATCHED_DISTANCE_TO_ROBOT && !wasCatched && !win){
+						wasCatched = true;
 					}
 					
 					/**
 					 * objective completed
 					 */
-					if(distanceToNest < NESTRADIUS-0.05){
+					if(distanceToNest < NESTRADIUS-0.05 && !wasCatched){
 						win = true;
 						fitness=fitness+1000;
 						simulator.stopSimulation();
