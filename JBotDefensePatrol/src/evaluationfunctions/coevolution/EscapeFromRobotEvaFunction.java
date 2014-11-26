@@ -1,21 +1,20 @@
 package evaluationfunctions.coevolution;
 
+import evolutionaryrobotics.evaluationfunctions.EvaluationFunction;
 import mathutils.Vector2d;
 import simulation.Simulator;
 import simulation.robot.Robot;
 import simulation.util.Arguments;
-import evolutionaryrobotics.evaluationfunctions.EvaluationFunction;
-
 
 /**
  * 
  * @author Nuno e Diogo
- * Evaluation Function of team A, chase team B robots
- */ 
-public class ChaseRobotEvaluationFunction extends EvaluationFunction {
-	String team="teama";
+ * Evaluation Function of team B, run away from team A robots
+ */
+public class EscapeFromRobotEvaFunction extends EvaluationFunction{
+	String team="teamb";
 
-	public ChaseRobotEvaluationFunction(Arguments args) {
+	public EscapeFromRobotEvaFunction(Arguments args) {
 		super(args);
 	}
 
@@ -26,15 +25,13 @@ public class ChaseRobotEvaluationFunction extends EvaluationFunction {
 			for (Robot r2 : simulator.getEnvironment().getRobots()) {
 				if(r.getDescription().equals(team) && !r2.getDescription().equals(team)){
 					/**
-					 * The fitness increases when the robot is closer of  team B robots
-					 * The fitness decreases when the robots is far from team B robots
+					 * The farther of team A robots, the more the fitness increases
+					 * The closer of team A robots, the more the fitness decreases 
 					 */
 					distanceToRobot = r.getPosition().distanceTo(r2.getPosition());
-					fitness += 1-distanceToRobot;
+					fitness += distanceToRobot -1;
 				}
 			}
-
 		}
 	}
-
 }
