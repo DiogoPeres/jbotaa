@@ -11,8 +11,12 @@
 
 - Simple evolution: Bring Prey to Nest (and protect it) (status: developed and commented);
 
-- Co-Evolution: Chase robot (status: developed, commented and reviewed );
+- Co-Evolution: Chase robot (no noise) (status: developed, commented and reviewed );
 
-- Co-Evolution: Invade Nest Without Being Caught (status: developed and commented);
+- Co-Evolution (no noise): Invade Nest Without Being Caught (status: developed, commented and reviewed);
 
 - _Backup created;_
+
+* Using noise in data:
+
+- Co-Evolution: Chase robot (in progress);
