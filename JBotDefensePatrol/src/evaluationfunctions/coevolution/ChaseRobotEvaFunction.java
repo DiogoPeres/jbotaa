@@ -3,6 +3,7 @@ package evaluationfunctions.coevolution;
 import mathutils.Vector2d;
 import simulation.Simulator;
 import simulation.robot.Robot;
+import simulation.robot.sensors.RobotRGBColorSensor;
 import simulation.util.Arguments;
 import evolutionaryrobotics.evaluationfunctions.EvaluationFunction;
 
@@ -21,7 +22,6 @@ public class ChaseRobotEvaFunction extends EvaluationFunction {
 
 	@Override
 	public void update(Simulator simulator) {
-		double distanceToRobot = 0;
 		for (Robot r : simulator.getEnvironment().getRobots()) {
 			for (Robot r2 : simulator.getEnvironment().getRobots()) {
 				if(r.getDescription().equals(team) && !r2.getDescription().equals(team)){
@@ -29,9 +29,22 @@ public class ChaseRobotEvaFunction extends EvaluationFunction {
 					 * The fitness increases when the robot is closer of  team B robots
 					 * The fitness decreases when the robots is far from team B robots
 					 */
-					
-					distanceToRobot = r.getPosition().distanceTo(r2.getPosition());
-					fitness += 1-distanceToRobot;
+					try{
+						if(r.getSensorWithId(2).isEnabled()){
+							if(r.getSensorWithId(2).getSensorReading(2)>=0.1 && r.getSensorWithId(2).getSensorReading(2)<0.5){
+								fitness = fitness + 0.2;
+							}else{
+								if(r.getSensorWithId(2).getSensorReading(2)>=0.5){
+									fitness = fitness + 0.5;
+								}
+							}
+							if(r.getSensorWithId(2).getSensorReading(2)<0.1){
+								fitness -=0.3;
+							}
+						}
+					}catch(Exception e){
+						System.err.println("RGB Color Sensor error");
+					}
 				}
 			}
 

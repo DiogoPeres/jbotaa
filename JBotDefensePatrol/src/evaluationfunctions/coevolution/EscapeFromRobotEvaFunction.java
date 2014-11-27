@@ -20,18 +20,28 @@ public class EscapeFromRobotEvaFunction extends EvaluationFunction{
 
 	@Override
 	public void update(Simulator simulator) {
-		double distanceToRobot = 0;
 		for (Robot r : simulator.getEnvironment().getRobots()) {
 			for (Robot r2 : simulator.getEnvironment().getRobots()) {
 				if(r.getDescription().equals(team) && !r2.getDescription().equals(team)){
 					/**
-					 * The farther of team A robots, the more the fitness increases
-					 * The closer of team A robots, the more the fitness decreases 
+					 * The fitness increases when the robot is closer of  team B robots
+					 * The fitness decreases when the robots is far from team B robots
 					 */
-					distanceToRobot = r.getPosition().distanceTo(r2.getPosition());
-					fitness += distanceToRobot -1;
+					try{
+						if(r.getSensorWithId(2).isEnabled()){
+							if(r.getSensorWithId(2).getSensorReading(2)>=0.1){
+								fitness = fitness - 0.5;
+							}
+							if(r.getSensorWithId(2).getSensorReading(2)<=0){
+								fitness +=0.3;
+							}
+						}
+					}catch(Exception e){
+						System.err.println("RGB Color Sensor error");
+					}
 				}
 			}
+
 		}
 	}
 }
