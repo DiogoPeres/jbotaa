@@ -19,4 +19,8 @@
 
 * Using noise in data:
 
-- Co-Evolution: Chase robot (in progress);
+- _Project structure update_;
+
+- Co-Evolution: Chase robot (status: ok);
+
+- Co-Evolution: Invade Nest Without Being Caught (status: in progress);
