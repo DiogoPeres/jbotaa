@@ -21,6 +21,6 @@
 
 - _Project structure update_;
 
-- Co-Evolution: Chase robot (status: ok);
+- Co-Evolution: Chase robot (status: developed);
 
 - Co-Evolution: Invade Nest Without Being Caught (status: in progress);
