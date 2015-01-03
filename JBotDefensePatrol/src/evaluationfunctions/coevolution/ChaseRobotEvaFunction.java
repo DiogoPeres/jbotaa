@@ -32,10 +32,10 @@ public class ChaseRobotEvaFunction extends EvaluationFunction {
 					try{
 						if(r.getSensorWithId(2).isEnabled()){
 							if(r.getSensorWithId(2).getSensorReading(2)>=0.1 && r.getSensorWithId(2).getSensorReading(2)<0.5){
-								fitness = fitness + 0.2;
+								fitness = fitness + 0.5;
 							}else{
 								if(r.getSensorWithId(2).getSensorReading(2)>=0.5){
-									fitness = fitness + 0.5;
+									fitness = fitness + 0.9;
 								}
 							}
 							if(r.getSensorWithId(2).getSensorReading(2)<0.1){

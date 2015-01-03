@@ -10,7 +10,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		try {
-			new EvolverMain(new String[]{"configurationFiles/coevolution/configuration_chaserobot.conf"});
+			new EvolverMain(new String[]{"configurationFiles/coevolution/configuration_invadeNest.conf"});
 		} catch (Exception e) {
 			System.out.println("JBotEvolver Main error! Check the configuration file!");
 		}

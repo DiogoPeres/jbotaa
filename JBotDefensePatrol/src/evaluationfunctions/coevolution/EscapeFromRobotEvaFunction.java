@@ -10,6 +10,7 @@ import simulation.util.Arguments;
  * 
  * @author Nuno e Diogo
  * Evaluation Function of team B, run away from team A robots
+ * walls must be green, robots must be red and blue
  */
 public class EscapeFromRobotEvaFunction extends EvaluationFunction{
 	String team="teamb";
@@ -29,12 +30,15 @@ public class EscapeFromRobotEvaFunction extends EvaluationFunction{
 					 */
 					try{
 						if(r.getSensorWithId(2).isEnabled()){
+							//System.out.println("_>"+r.getSensorWithId(2).getSensorReading(2));
 							if(r.getSensorWithId(2).getSensorReading(2)>=0.1){
-								fitness = fitness - 0.5;
+								fitness = fitness - 0.3;
+							}else{
+								if(r.getSensorWithId(2).getSensorReading(2)<=0){
+									fitness +=0.3;
+								}
 							}
-							if(r.getSensorWithId(2).getSensorReading(2)<=0){
-								fitness +=0.3;
-							}
+							
 						}
 					}catch(Exception e){
 						System.err.println("RGB Color Sensor error");
