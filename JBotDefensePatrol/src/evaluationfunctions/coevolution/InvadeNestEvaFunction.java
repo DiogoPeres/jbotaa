@@ -39,7 +39,7 @@ public class InvadeNestEvaFunction extends EvaluationFunction{
 								simulator.stopSimulation();
 							}
 							if(!win){
-								fitness+=0.1-r.getSensorWithId(2).getSensorReading(2);
+								fitness+=0.3-r.getSensorWithId(2).getSensorReading(2);
 								fitness+=r.getSensorWithId(3).getSensorReading(3)-0.1;
 								if(r.getSensorWithId(3).getSensorReading(3)>=GOOD_DISTANCE_TO_NEST){
 									fitness++;
