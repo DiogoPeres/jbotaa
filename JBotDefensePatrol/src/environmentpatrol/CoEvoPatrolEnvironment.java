@@ -82,10 +82,11 @@ public class CoEvoPatrolEnvironment extends Environment{
 		
 		if(startInNest) {
 			for (Robot r : robots) {
-				if(r.getDescription().equalsIgnoreCase("teama"))
+				if(r.getDescription().equalsIgnoreCase("teama")){
 					r.teleportTo(new Vector2d(width/4-0.5, height/1.8-0.5));
+				}
 				else
-					r.teleportTo(new Vector2d(-width/5+0.1, -height/1.8+0.5));
+					r.teleportTo(new Vector2d(-width/5+0.4, -height/1.8+0.5));
 				
 				r.setOrientation(random.nextDouble() * 2*Math.PI);
 			}

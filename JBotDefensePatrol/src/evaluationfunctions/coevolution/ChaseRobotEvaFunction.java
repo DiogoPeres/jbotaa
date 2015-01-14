@@ -7,14 +7,13 @@ import simulation.robot.sensors.RobotRGBColorSensor;
 import simulation.util.Arguments;
 import evolutionaryrobotics.evaluationfunctions.EvaluationFunction;
 
-
 /**
  * 
- * @author Nuno e Diogo
- * Evaluation Function of team A, chase team B robots
- */ 
+ * @author Nuno e Diogo Evaluation Function of team A, chase team B robots
+ */
 public class ChaseRobotEvaFunction extends EvaluationFunction {
-	String team="teama";
+	String team = "teama";
+	boolean inPersuit = false;
 
 	public ChaseRobotEvaFunction(Arguments args) {
 		super(args);
@@ -24,26 +23,41 @@ public class ChaseRobotEvaFunction extends EvaluationFunction {
 	public void update(Simulator simulator) {
 		for (Robot r : simulator.getEnvironment().getRobots()) {
 			for (Robot r2 : simulator.getEnvironment().getRobots()) {
-				if(r.getDescription().equals(team) && !r2.getDescription().equals(team)){
+				if (r.getDescription().equals(team)
+						&& !r2.getDescription().equals(team)) {
 					/**
-					 * The fitness increases when the robot is closer of  team B robots
-					 * The fitness decreases when the robots is far from team B robots
+					 * The fitness increases when the robot is closer of team B
+					 * robots The fitness decreases when the robots is far from
+					 * team B robots
 					 */
-					try{
-						if(r.getSensorWithId(2).isEnabled()){
-							if(r.getSensorWithId(2).getSensorReading(2)>=0.1 && r.getSensorWithId(2).getSensorReading(2)<0.5){
-								fitness = fitness + 0.5;
-							}else{
-								if(r.getSensorWithId(2).getSensorReading(2)>=0.5){
-									fitness = fitness + 0.9;
-								}
+					try {
+						if (r.getSensorWithId(3).isEnabled() && r.getSensorWithId(2).isEnabled()) {
+							fitness += r.getSensorWithId(2).getSensorReading(2)-0.2;
+							if(!inPersuit) fitness += r.getSensorWithId(3).getSensorReading(3)-0.4;
+							if(r.getSensorWithId(2).getSensorReading(2)>0.4) inPersuit=true;
+							if(r.getSensorWithId(2).getSensorReading(2)>0.8){
+								fitness+=1+r.getSensorWithId(2).getSensorReading(2);
 							}
-							if(r.getSensorWithId(2).getSensorReading(2)<0.1){
-								fitness -=0.3;
-							}
+							/*if(r.getSensorWithId(2).getSensorReading(2)>0.5) inPersuit=true;
+                            if(r.getSensorWithId(3).getSensorReading(3)<0.4 && !inPersuit) fitness -=1;
+                            if(!inPersuit && r.getSensorWithId(3).getSensorReading(3)>=0.7)fitness +=1;
+                            if(!inPersuit && r.getSensorWithId(3).getSensorReading(3)<=0.5)fitness-=0.5;
+                            //if(!inPersuit) fitness+=r.getSensorWithId(3).getSensorReading(3);
+                            if(r.getSensorWithId(2).getSensorReading(2)>0.1)fitness += r.getSensorWithId(2).getSensorReading(2);   
+                            if(inPersuit && r.getSensorWithId(2).getSensorReading(2)>0.5) {
+                            	fitness +=1;
+                            }
+                            if(inPersuit && r.getSensorWithId(2).getSensorReading(2)<0.1){
+                            	fitness-=0.5;
+                            }
+                            if(inPersuit && r.getSensorWithId(2).getSensorReading(2)<=0.9){
+                            	fitness+=100;
+                            	simulator.stopSimulation();
+                            }*/
+                        
 						}
-					}catch(Exception e){
-						System.err.println("RGB Color Sensor error");
+					} catch (Exception e) {
+						System.err.println("Nest Sensor or RGB Color Sensor error");
 					}
 				}
 			}

@@ -15,7 +15,5 @@ public class VMain {
 		} catch (Exception e) {
 			System.out.println("JbotSim error! Check the Gui options on VMain");
 		}
-
 	}
-
 }

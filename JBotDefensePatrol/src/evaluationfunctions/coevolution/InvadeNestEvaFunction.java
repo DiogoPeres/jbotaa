@@ -7,65 +7,66 @@ import simulation.util.Arguments;
 import environmentpatrol.CoEvoPatrolEnvironment;
 import evolutionaryrobotics.evaluationfunctions.EvaluationFunction;
 
-public class InvadeNestEvaFunction extends EvaluationFunction{
+public class InvadeNestEvaFunction extends EvaluationFunction {
 	private Vector2d nestPosition;
-	private double NEST = 1;
+	private double NEST = 0.9;
 	private double GOOD_DISTANCE_TO_NEST = 0.7;
-	String team="teamb";
+	String team = "teamb";
 	private boolean win = false;
-	private double CATCHED_DISTANCE_TO_ROBOT=0.2;
-	
+	private boolean completed=false;
+	private double CATCHED_DISTANCE_TO_ROBOT = 0.2;
+
 	public InvadeNestEvaFunction(Arguments args) {
 		super(args);
 	}
 
 	@Override
 	public void update(Simulator simulator) {
-		
+
 		/**
-		 * The farther of team A robots, the more the fitness increases
-		 * The closer of team A robots, the more the fitness decreases 
-		 * Fitness also increases when the robot is close to the nest
+		 * The farther of team A robots, the more the fitness increases The
+		 * closer of team A robots, the more the fitness decreases Fitness also
+		 * increases when the robot is close to the nest
 		 */
 		for (Robot r : simulator.getEnvironment().getRobots()) {
 			for (Robot r2 : simulator.getEnvironment().getRobots()) {
-				if(r.getDescription().equals(team) && !r2.getDescription().equals(team)){
-					try{
-						if(r.getSensorWithId(2).isEnabled() && r.getSensorWithId(3).isEnabled()){
-							
-							if(r.getSensorWithId(3).getSensorReading(3) >= NEST && r.getSensorWithId(2).getSensorReading(2)<=CATCHED_DISTANCE_TO_ROBOT){
+				if (r.getDescription().equals(team)
+						&& !r2.getDescription().equals(team)) {
+					try {
+						if (r.getSensorWithId(2).isEnabled()
+								&& r.getSensorWithId(3).isEnabled()) {
+
+							if (r.getSensorWithId(3).getSensorReading(3) > NEST
+									&& r.getSensorWithId(2).getSensorReading(2) <= CATCHED_DISTANCE_TO_ROBOT && !completed) {
 								win = true;
-								fitness=fitness+100;
-								simulator.stopSimulation();
+								fitness = fitness + 100;
+								completed=true;
+								//simulator.stopSimulation();
 							}
-							if(!win){
-								fitness+=0.3-r.getSensorWithId(2).getSensorReading(2);
-								fitness+=r.getSensorWithId(3).getSensorReading(3)-0.1;
-								if(r.getSensorWithId(3).getSensorReading(3)>=GOOD_DISTANCE_TO_NEST){
-									fitness++;
-								}
+							if (!win) {
+								if(!completed && r.getSensorWithId(2).getSensorReading(2)>0.3)fitness -= 0.1;
+								if(completed)fitness += 0.3-r.getSensorWithId(2).getSensorReading(2);
+								if(completed)fitness += 1-r.getSensorWithId(3).getSensorReading(3);
+								if(!completed)fitness += r.getSensorWithId(3).getSensorReading(3)-0.6;
+								if(r.getSensorWithId(3).getSensorReading(3)>=0.9)completed=true;
 							}
-							
-							
+
 						}
-					}catch(Exception e){
+					} catch (Exception e) {
 						System.err.println("RGB Color Sensor error");
 					}
-					
-					
+
 					/**
 					 * objective completed
 					 */
-					
-					
+
 					/**
 					 * objective NOT completed
 					 */
-					
+
 				}
 			}
 
 		}
 	}
 }
-
