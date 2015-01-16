@@ -23,4 +23,6 @@
 
 - Co-Evolution: Chase robot (status: developed);
 
-- Co-Evolution: Invade Nest Without Being Caught (status: in progress);
+- Co-Evolution: Invade Nest Without Being Caught (status: developed);
+
+- Co-Evolution (multi): Patrol Nest / Invade Nest (status: in progress);
