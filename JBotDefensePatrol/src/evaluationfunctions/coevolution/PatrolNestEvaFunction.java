@@ -22,9 +22,7 @@ public class PatrolNestEvaFunction extends EvaluationFunction {
 	@Override
 	public void update(Simulator simulator) {
 		for (Robot r : simulator.getEnvironment().getRobots()) {
-			for (Robot r2 : simulator.getEnvironment().getRobots()) {
-				if (r.getDescription().equals(team)
-						&& !r2.getDescription().equals(team)) {
+				if (r.getDescription().equals(team)) {
 					/**
 					 * The fitness increases when the robot is closer of team B
 					 * robots The fitness decreases when the robots is far from
@@ -32,15 +30,14 @@ public class PatrolNestEvaFunction extends EvaluationFunction {
 					 */
 					try {
 						if (r.getSensorWithId(3).isEnabled() && r.getSensorWithId(2).isEnabled()) {
-							if(r.getSensorWithId(2).getSensorReading(2)>=0.4){
-								inPersuit=true;
-							}
-							fitness += r.getSensorWithId(2).getSensorReading(2)-0.3;
-							if(!inPersuit){
-								fitness += r.getSensorWithId(3).getSensorReading(3)-0.4;
-							}
-							if(r.getSensorWithId(2).getSensorReading(2)>0.8){
-								fitness+=1+r.getSensorWithId(2).getSensorReading(2);
+							fitness += r.getSensorWithId(2).getSensorReading(2)-0.1;
+							if(!inPersuit) fitness += r.getSensorWithId(3).getSensorReading(3)-0.3;
+							if(r.getSensorWithId(2).getSensorReading(2)>0.4) inPersuit=true;
+							if(r.getSensorWithId(2).getSensorReading(2)>0.6){
+								fitness+=(r.getSensorWithId(2).getSensorReading(2));
+								if(r.getSensorWithId(2).getSensorReading(2)>0.9 && inPersuit){
+									fitness += (1+r.getSensorWithId(2).getSensorReading(2));
+								}
 							}
 							/*if(r.getSensorWithId(2).getSensorReading(2)>0.5) inPersuit=true;
                             if(r.getSensorWithId(3).getSensorReading(3)<0.4 && !inPersuit) fitness -=1;
@@ -64,7 +61,7 @@ public class PatrolNestEvaFunction extends EvaluationFunction {
 						System.err.println("Nest Sensor or RGB Color Sensor error");
 					}
 				}
-			}
+			
 
 		}
 	}

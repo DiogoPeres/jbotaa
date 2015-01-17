@@ -29,27 +29,27 @@ public class InvadeNestEvaFunction extends EvaluationFunction {
 		 * increases when the robot is close to the nest
 		 */
 		for (Robot r : simulator.getEnvironment().getRobots()) {
-			for (Robot r2 : simulator.getEnvironment().getRobots()) {
-				if (r.getDescription().equals(team)
-						&& !r2.getDescription().equals(team)) {
+				if (r.getDescription().equals(team)) {
+					
 					try {
 						if (r.getSensorWithId(2).isEnabled()
 								&& r.getSensorWithId(3).isEnabled()) {
 
 							if (r.getSensorWithId(3).getSensorReading(3) > NEST
 									&& r.getSensorWithId(2).getSensorReading(2) <= CATCHED_DISTANCE_TO_ROBOT && !completed) {
-								win = true;
-								fitness = fitness + 100;
+									//remove ->  && !completed
+								fitness = 1+r.getSensorWithId(3).getSensorReading(3);
 								completed=true;
 								//simulator.stopSimulation();
 							}
-							if (!win) {
+							
 								if(!completed && r.getSensorWithId(2).getSensorReading(2)>0.3)fitness -= 0.1;
-								if(completed)fitness += 0.3-r.getSensorWithId(2).getSensorReading(2);
-								if(completed)fitness += 1-r.getSensorWithId(3).getSensorReading(3);
+								if(completed)fitness += 0.2-r.getSensorWithId(2).getSensorReading(2);
+								//if(completed)fitness += 0.5-r.getSensorWithId(2).getSensorReading(2);
+								//if(completed)fitness += 1-r.getSensorWithId(3).getSensorReading(3);
 								if(!completed)fitness += r.getSensorWithId(3).getSensorReading(3)-0.6;
 								if(r.getSensorWithId(3).getSensorReading(3)>=0.9)completed=true;
-							}
+							
 
 						}
 					} catch (Exception e) {
@@ -65,7 +65,7 @@ public class InvadeNestEvaFunction extends EvaluationFunction {
 					 */
 
 				}
-			}
+			
 
 		}
 	}
