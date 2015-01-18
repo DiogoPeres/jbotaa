@@ -35,9 +35,7 @@ public class PatrolNestEvaFunction extends EvaluationFunction {
 							if(r.getSensorWithId(2).getSensorReading(2)>0.4) inPersuit=true;
 							if(r.getSensorWithId(2).getSensorReading(2)>0.6){
 								fitness+=(r.getSensorWithId(2).getSensorReading(2));
-								if(r.getSensorWithId(2).getSensorReading(2)>0.9 && inPersuit){
-									fitness += (1+r.getSensorWithId(2).getSensorReading(2));
-								}
+								
 							}
 							/*if(r.getSensorWithId(2).getSensorReading(2)>0.5) inPersuit=true;
                             if(r.getSensorWithId(3).getSensorReading(3)<0.4 && !inPersuit) fitness -=1;

@@ -72,10 +72,10 @@ public class CoEvoPatrolEnvironment extends Environment{
 		}
 
 		// Parede do mapa
-		walls.add(new Wall(simulator, "topWall", 0, height/2, Math.PI, 1, 1, 0, width+0.05, 0.05, PhysicalObjectType.WALL));
-		walls.add(new Wall(simulator, "bottomWall", 0, -height/2, Math.PI, 1, 1, 0, width+0.05, 0.05, PhysicalObjectType.WALL));
-		walls.add(new Wall(simulator, "leftWall", -width/2, 0, Math.PI, 1, 1, 0, 0.05, height, PhysicalObjectType.WALL));
-		walls.add(new Wall(simulator, "rightWall", width/2, 0, Math.PI, 1, 1, 0, 0.05, height, PhysicalObjectType.WALL));
+		walls.add(new Wall(simulator, "topWall", 0, height/2, Math.PI, 3, 1, 0, width+0.05, 0.05, PhysicalObjectType.WALL));
+		walls.add(new Wall(simulator, "bottomWall", 0, -height/2, Math.PI, 3, 1, 0, width+0.05, 0.05, PhysicalObjectType.WALL));
+		walls.add(new Wall(simulator, "leftWall", -width/2, 0, Math.PI, 3, 1, 0, 0.05, height, PhysicalObjectType.WALL));
+		walls.add(new Wall(simulator, "rightWall", width/2, 0, Math.PI, 3, 1, 0, 0.05, height, PhysicalObjectType.WALL));
 		for (Wall wall : walls) {
 			addObject(wall);
 		}
