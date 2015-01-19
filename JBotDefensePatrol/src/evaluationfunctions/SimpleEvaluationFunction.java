@@ -21,36 +21,15 @@ public class SimpleEvaluationFunction extends EvaluationFunction {
 	public SimpleEvaluationFunction(Arguments args) {
 		super(args);
 	}
-	
+	/**
+	 * The closest the nest, the greater the fitness
+	 */
 	@Override
 	public void update(Simulator simulator) {			
-		int numberOfRobotsCloseToNest = 0;
-		
-		NESTRADIUS         = ((SimpleEnvironment)(simulator.getEnvironment())).getNestRadius();
-		Vector2d pos=null;
-		Vector2d coord = new Vector2d();
 		for(Robot r : simulator.getEnvironment().getRobots()){
-			pos=r.getPosition();
-			if(lastDistanceToNest<Double.MAX_VALUE){
-				lastDistanceToNest=pos.distanceTo(nestPosition);
-			}
-			/**
-			 * Increases Fitness for each time the robot approaches the nest
-			 * Decreases Fitness any time the robots move away from the nest
-			 */
-			if(lastDistanceToNest>pos.distanceTo(nestPosition)){
-				fitness+=(lastDistanceToNest-pos.distanceTo(nestPosition))*100;
-			}else{
-				fitness-=(pos.distanceTo(nestPosition)-lastDistanceToNest)*100;
-			}
-			lastDistanceToNest = pos.distanceTo(nestPosition);
-			/**
-			 * Increases Fitness if the robot is in the nest
-			 */
-			if(pos.distanceTo(nestPosition) <=0.01){
-				fitness+=2;
-			}
+			fitness+=1-r.getPosition().distanceTo(nestPosition);
 		}
+		
 		
 	}
 
