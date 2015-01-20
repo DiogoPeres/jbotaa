@@ -27,10 +27,10 @@
 
 * Patrol Nest / Final changes:
 
-- Co-Evolution (multi): Patrol Nest / Invade Nest (status: in progress);
+- Co-Evolution (multi): Patrol Nest / Invade Nest (status: developed);
 
-- Testing / improving fitness functions (status: in progress);
+- Testing / improving fitness functions (status: developed);
 
 - _Consistency Point / Backup created;_
 
-- Final report (status: not started yet).
+- Final report (status: developed).
