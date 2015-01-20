@@ -9,7 +9,7 @@ import evolutionaryrobotics.evaluationfunctions.EvaluationFunction;
 
 /**
  * 
- * @author Nuno e Diogo Evaluation Function of team A, chase team B robots
+ * @author Nuno e Diogo Evaluation Function of team A, chase team B robots and patrol nest
  */
 public class PatrolNestEvaFunction extends EvaluationFunction {
 	String team = "teama";
@@ -27,6 +27,7 @@ public class PatrolNestEvaFunction extends EvaluationFunction {
 					 * The fitness increases when the robot is closer of team B
 					 * robots The fitness decreases when the robots is far from
 					 * team B robots
+					 * The fitnees is increases when the robot is closer to the nest and didn't detect any enemies yet
 					 */
 					try {
 						if (r.getSensorWithId(3).isEnabled() && r.getSensorWithId(2).isEnabled()) {
@@ -45,7 +46,7 @@ public class PatrolNestEvaFunction extends EvaluationFunction {
                             if(r.getSensorWithId(2).getSensorReading(2)>0.1)fitness += r.getSensorWithId(2).getSensorReading(2);   
                             if(inPersuit && r.getSensorWithId(2).getSensorReading(2)>0.5) {
                             	fitness +=1;
-                            }
+                            }-
                             if(inPersuit && r.getSensorWithId(2).getSensorReading(2)<0.1){
                             	fitness-=0.5;
                             }

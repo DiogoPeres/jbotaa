@@ -6,7 +6,11 @@ import simulation.robot.Robot;
 import simulation.util.Arguments;
 import environmentpatrol.CoEvoPatrolEnvironment;
 import evolutionaryrobotics.evaluationfunctions.EvaluationFunction;
-
+/**
+ * 
+ * @author Diogo e Nuno Evaluation Function of team B, invade nest without being detected and / or being catched
+ *
+ */
 public class InvadeNestEvaFunction extends EvaluationFunction {
 	private Vector2d nestPosition;
 	private double NEST = 0.9;
