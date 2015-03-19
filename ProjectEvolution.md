@@ -1,0 +1,35 @@
+### Work in progress / developed: ###
+
+- Simple evolution: Nest search (status: developed, reviewed and commented);
+
+- Simple evolution: Patrol nest (status: developed, commented and reviewed);
+
+- Simple evolution: Find prey (status: developed, commented and reviewed);
+
+- _Backup created;_
+
+- Simple evolution: Bring Prey to Nest (and protect it) (status: developed and commented);
+
+- Co-Evolution: Chase robot (no noise) (status: developed, commented and reviewed );
+
+- Co-Evolution (no noise): Invade Nest Without Being Caught (status: developed, commented and reviewed);
+
+- _Backup created;_
+
+**Using noise in data:**
+
+- _Project structure update_;
+
+- Co-Evolution: Chase robot (status: developed);
+
+- Co-Evolution: Invade Nest Without Being Caught (status: developed);
+
+**Patrol Nest / Final changes:**
+
+- Co-Evolution (multi): Patrol Nest / Invade Nest (status: developed);
+
+- Testing / improving fitness functions (status: developed);
+
+- _Consistency Point / Backup created;_
+
+- Final report (status: developed).
